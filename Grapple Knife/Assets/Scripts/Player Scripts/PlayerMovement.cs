@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     //Movement
     public float moveSpeed = 4500;
     public float maxSpeed = 20;
+    public float maxAeroSpeed;
     public bool grounded;
     public LayerMask whatIsGround;
 
@@ -67,6 +68,8 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         Movement();
+
+        
     }
 
     private void Update()
@@ -164,6 +167,13 @@ public class PlayerMovement : MonoBehaviour
         //Apply forces to move player
         rb.AddForce(orientation.transform.forward * y * moveSpeed * Time.deltaTime * multiplier * multiplierV);
         rb.AddForce(orientation.transform.right * x * moveSpeed * Time.deltaTime * multiplier);
+
+        //attempt at limiting velocity
+        if (rb.velocity.magnitude > maxAeroSpeed)
+        {
+            rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxAeroSpeed);
+        }
+
     }
 
     private void Jump()

@@ -3,18 +3,36 @@ using System.Collections;
 
 public class GrapplingGun : MonoBehaviour
 {
+    [Header("Grapple Logic")]
     private Vector3 grapplePoint;
     public LayerMask whatIsGrappleable;
     private LayerMask layerMask;
 
     public Transform gunTip, camera, player;
-    private float maxDistance = 30f;
-
+    [Header("Joint statistics")]
     private SpringJoint joint;
+    public float jointSpring;
+    public float jointDamper;
+    public float jointMassScale;
+    [Header("Grapple statistics")]
+    public float maxDistance = 30f;
+    public float grappleCooldownDelay;
+    //temp var used to track distance, should be cleared whenever grapple is let go
+    [SerializeField] private float jointCurrentDistance;
+
+    //used for aim assist, rename
+    [Header("Grapple Aim Assist")]
     public GameObject debugAssist;
 
+    //flags for grapple restrictions
+    [Header("Grapple Bools")]
     public bool isGrappling = false;
+    public bool allowGrapple = false;
     public bool grappleCooldown;
+    //used for ui
+
+    
+
 
     void Awake()
     {
@@ -24,55 +42,64 @@ public class GrapplingGun : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetMouseButtonDown(0) && grappleCooldown == false)
+        if (Input.GetMouseButtonDown(0) && grappleCooldown == false && allowGrapple)
         {
             StartGrapple();
             grappleCooldown = true;
             isGrappling = true;
         }
-
         else if (Input.GetMouseButtonUp(0))
         {
             StopGrapple();
-            StartCoroutine(StartGrappleCooldown());
+            StartCoroutine(StartGrappleCooldown(grappleCooldownDelay));
             isGrappling = false;
+            SetGrappleJointDistance(maxDistance);
         }
+
 
         RaycastHit hit;
         if (Physics.SphereCast(camera.position, 0.5f, camera.forward, out hit, maxDistance, whatIsGrappleable) && isGrappling == false && grappleCooldown == false)
         {
             debugAssist.SetActive(true);
             debugAssist.transform.position = hit.point;
+            allowGrapple = true;
         }
-
         else
         {
             debugAssist.SetActive(false);
+            allowGrapple = false;
         }
+
 
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            joint.maxDistance = 0f;
+            if (isGrappling)
+            {
+                joint.maxDistance = 0f;
+            }
+            
         }
         else if (Input.GetKeyUp(KeyCode.LeftShift))
         {
-            joint.maxDistance = 30f; //put whatever you want the "normal" distance to be here -- the distance when not reeled in
+            if (isGrappling)
+            {
+                jointCurrentDistance = Vector3.Distance(gunTip.position, grapplePoint);
+                SetGrappleJointDistance(jointCurrentDistance);
+            }
         }
-
     }
 
-    //Called after Update
-    /* void LateUpdate()
-     {
-         DrawRope();
-     } */
+    //time top make a func that can set the max distance, usable for when doing a reel
+    public void SetGrappleJointDistance(float jointDistance)
+    {
+        joint.maxDistance = jointDistance;
+    }
 
     void StartGrapple()
     {
         RaycastHit hit;
         if (Physics.SphereCast(camera.position, 0.5f, camera.forward, out hit, maxDistance, whatIsGrappleable))
         {
-
             grapplePoint = hit.point;
             joint = player.gameObject.AddComponent<SpringJoint>();
             joint.autoConfigureConnectedAnchor = false;
@@ -81,16 +108,12 @@ public class GrapplingGun : MonoBehaviour
             float distanceFromPoint = Vector3.Distance(player.position, grapplePoint);
 
             //The distance grapple will try to keep from grapple point.
-            joint.maxDistance = distanceFromPoint * 0.8f;
+            SetGrappleJointDistance(distanceFromPoint * 0.8f); //Sets Max
             joint.minDistance = 0f;
 
-            //Adjust these values to fit your game.
-            joint.spring = 4.5f;
-            joint.damper = 7f;
-            joint.massScale = 4.5f;
-
-            /*  lr.positionCount = 2; */
-
+            joint.spring = jointSpring;
+            joint.damper = jointDamper;
+            joint.massScale = jointMassScale;
         }
     }
 
@@ -105,7 +128,6 @@ public class GrapplingGun : MonoBehaviour
 
     public void StopGrapple()
     {
-        // lr.positionCount = 0;
         Destroy(joint);
     }
 
@@ -119,9 +141,9 @@ public class GrapplingGun : MonoBehaviour
         return grapplePoint;
     }
 
-    public IEnumerator StartGrappleCooldown()
+    public IEnumerator StartGrappleCooldown(float cooldownTime)
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(cooldownTime);
         grappleCooldown = false;
     }
 }

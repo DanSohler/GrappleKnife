@@ -682,8 +682,8 @@ GameObject:
   - component: {fileID: 5380446251237087903}
   - component: {fileID: 5380446251237087902}
   - component: {fileID: 5380446251237087901}
-  - component: {fileID: 5380446251474631869}
   - component: {fileID: 5380446251237087897}
+  - component: {fileID: 5380446251474631869}
   m_Layer: 8
   m_Name: GrappleGun
   m_TagString: Untagged
@@ -866,27 +866,6 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!114 &5380446251474631869
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5380446251237087875}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0360ce7cec5e92c498f22429ddb79614, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  whatIsGrappleable:
-    serializedVersion: 2
-    m_Bits: 64
-  gunTip: {fileID: 5380446250223928016}
-  camera: {fileID: 5380446251704806021}
-  player: {fileID: 5380446250022615700}
-  debugAssist: {fileID: 0}
-  isGrappling: 0
-  grappleCooldown: 0
 --- !u!114 &5380446251237087897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -930,6 +909,27 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5380446251474631869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5380446251237087875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0360ce7cec5e92c498f22429ddb79614, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatIsGrappleable:
+    serializedVersion: 2
+    m_Bits: 64
+  gunTip: {fileID: 5380446250223928016}
+  camera: {fileID: 5380446251704806021}
+  player: {fileID: 5380446250022615700}
+  debugAssist: {fileID: 0}
+  isGrappling: 0
+  grappleCooldown: 0
 --- !u!1 &5380446251545866590
 GameObject:
   m_ObjectHideFlags: 0
