@@ -3,9 +3,11 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public GrapplingGun grappleScript;
+    [Header("Refs")]
 
-    //Assingables
+    public GrapplingGun grappleScript;
+    public GameManager gm;
+
     public Transform playerCam;
     public Transform orientation;
 
@@ -17,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     private float sensitivity = 50f;
     private float sensMultiplier = 1f;
 
-    //Movement
+    [Header("Movement Vars")]
     public float moveSpeed = 4500;
     public float maxSpeed = 20;
     public float maxAeroSpeed;
@@ -28,13 +30,13 @@ public class PlayerMovement : MonoBehaviour
     private float threshold = 0.01f;
     public float maxSlopeAngle = 35f;
 
-    //Crouch & Slide
+    [Header("Slide/Crouch Vars")]
     private Vector3 crouchScale = new Vector3(1, 0.5f, 1);
     private Vector3 playerScale;
     public float slideForce = 400;
     public float slideCounterMovement = 0.2f;
 
-    //Jumping
+    [Header("Jumping Vars")]
     private bool readyToJump = true;
     private float jumpCooldown = 0.25f;
     public float jumpForce = 550f;
@@ -46,8 +48,7 @@ public class PlayerMovement : MonoBehaviour
     //Sliding
     private Vector3 normalVector = Vector3.up;
     private Vector3 wallNormalVector;
-
-    //Aerial
+    [Header("Aerial Vars")]
     public float airMul = 0.01f;
     public float airMulV = 0.01f;
 
@@ -60,22 +61,24 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         playerScale = transform.localScale;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
     }
 
 
     private void FixedUpdate()
     {
-        Movement();
-
-        
+        if (gm.gameIsActive)
+        {
+            Movement();
+        }
     }
 
     private void Update()
     {
-        MyInput();
-        Look();
+        if (gm.gameIsActive)
+        {
+            MyInput();
+            Look();
+        }
     }
 
     /// <summary>

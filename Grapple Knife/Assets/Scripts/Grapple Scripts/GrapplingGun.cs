@@ -31,7 +31,9 @@ public class GrapplingGun : MonoBehaviour
     public bool grappleCooldown;
     //used for ui
 
-    
+
+    public GameManager gm;
+
 
 
     void Awake()
@@ -41,52 +43,56 @@ public class GrapplingGun : MonoBehaviour
 
     void Update()
     {
-
-        if (Input.GetMouseButtonDown(0) && grappleCooldown == false && allowGrapple)
+        if (gm.gameIsActive)
         {
-            StartGrapple();
-            grappleCooldown = true;
-            isGrappling = true;
-        }
-        else if (Input.GetMouseButtonUp(0))
-        {
-            StopGrapple();
-            StartCoroutine(StartGrappleCooldown(grappleCooldownDelay));
-            isGrappling = false;
-            SetGrappleJointDistance(maxDistance);
-        }
-
-
-        RaycastHit hit;
-        if (Physics.SphereCast(camera.position, 0.5f, camera.forward, out hit, maxDistance, whatIsGrappleable) && isGrappling == false && grappleCooldown == false)
-        {
-            debugAssist.SetActive(true);
-            debugAssist.transform.position = hit.point;
-            allowGrapple = true;
-        }
-        else
-        {
-            debugAssist.SetActive(false);
-            allowGrapple = false;
-        }
-
-
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            if (isGrappling)
+            if (Input.GetMouseButtonDown(0) && grappleCooldown == false && allowGrapple)
             {
-                joint.maxDistance = 0f;
+                StartGrapple();
+                grappleCooldown = true;
+                isGrappling = true;
             }
-            
-        }
-        else if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            if (isGrappling)
+            else if (Input.GetMouseButtonUp(0))
             {
-                jointCurrentDistance = Vector3.Distance(gunTip.position, grapplePoint);
-                SetGrappleJointDistance(jointCurrentDistance);
+                StopGrapple();
+                StartCoroutine(StartGrappleCooldown(grappleCooldownDelay));
+                isGrappling = false;
+                SetGrappleJointDistance(maxDistance);
+            }
+
+
+            RaycastHit hit;
+            if (Physics.SphereCast(camera.position, 0.5f, camera.forward, out hit, maxDistance, whatIsGrappleable) && isGrappling == false && grappleCooldown == false)
+            {
+                debugAssist.SetActive(true);
+                debugAssist.transform.position = hit.point;
+                allowGrapple = true;
+            }
+            else
+            {
+                debugAssist.SetActive(false);
+                allowGrapple = false;
+            }
+
+
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                if (isGrappling)
+                {
+                    joint.maxDistance = 0f;
+                }
+
+            }
+            else if (Input.GetKeyUp(KeyCode.LeftShift))
+            {
+                if (isGrappling)
+                {
+                    jointCurrentDistance = Vector3.Distance(gunTip.position, grapplePoint);
+                    SetGrappleJointDistance(jointCurrentDistance);
+                }
             }
         }
+
+        
     }
 
     //time top make a func that can set the max distance, usable for when doing a reel

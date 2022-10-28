@@ -10,25 +10,36 @@ public class GrappleCooldownUI : MonoBehaviour
     public float cooldownTimeRemaining;
     public Image fillMeter;
 
+    private void Start()
+    {
+        cooldownTimeRemaining = grappleScript.grappleCooldownDelay;
+    }
+
 
     private void Update()
     {
         if (grappleScript.grappleCooldown && grappleScript.isGrappling!)
         {
-            cooldownTimeRemaining = grappleScript.grappleCooldownDelay;
-            StartCoroutine(UiMeterFill(cooldownTimeRemaining));
+            ReduceFillMeter();
         }
-
-        Debug.Log(cooldownTimeRemaining);
-
     }
 
-    public IEnumerator UiMeterFill(float cooldownTime)
+    private void ReduceFillMeter()
     {
         if (cooldownTimeRemaining > 0)
         {
             cooldownTimeRemaining -= Time.deltaTime;
+            fillMeter.fillAmount -= cooldownTimeRemaining * Time.deltaTime;
         }
-        yield return new WaitForSeconds(cooldownTime);
+        
+    }
+
+    private void CheckIfNotGrappling()
+    {
+        if (grappleScript.isGrappling!)
+        {
+            cooldownTimeRemaining = grappleScript.grappleCooldownDelay;
+        }
+
     }
 }

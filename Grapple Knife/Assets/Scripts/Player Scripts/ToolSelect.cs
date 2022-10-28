@@ -12,7 +12,7 @@ public class ToolSelect : MonoBehaviour
     private void Awake()
     {
         grappleObj.SetActive(true);
-        knifeObj.SetActive(false);
+        knifeObj.SetActive(true);
     }
 
     // Update is called once per frame
