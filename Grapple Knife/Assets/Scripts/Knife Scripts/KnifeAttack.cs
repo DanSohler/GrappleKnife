@@ -5,11 +5,15 @@ using UnityEngine;
 public class KnifeAttack : MonoBehaviour
 {
     [SerializeField] LayerMask killableLayer;
-    private bool cooldownDone = true;
+
+    [Header("Knife References")]
+
     [SerializeField] Material knifeIndicatorMat;
     [SerializeField] Material knifeMat;
     [SerializeField] GameObject knifeMesh;
     [SerializeField] Animator animController;
+    [SerializeField] GameObject playerBody;
+    [SerializeField] GameObject camOrientation;
 
     [Header("Knife Vars")]
 
@@ -17,14 +21,60 @@ public class KnifeAttack : MonoBehaviour
     [SerializeField] float attackCooldown;
     [SerializeField] float attackAnimSpeed;
     [SerializeField] float rewardTime;
+    private bool cooldownDone = true;
+
+    [Header("Knife Dash Vars")]
+    [SerializeField] float dashForce;
+    [SerializeField] float dashUpwardForce;
+    [SerializeField] bool usingGravity;
 
     public GameManager gm;
     [SerializeField] CountdownTimer cdTimer;
     private void Start()
     {
-
         animController.SetFloat("speedMultiplier", attackAnimSpeed);
     }
+
+    #region Dash
+
+    public void Dash()
+    {
+        Transform forwardT;
+        forwardT = camOrientation.transform;
+
+        Vector3 dashDirection = GetDirection(forwardT);
+
+        Vector3 forcesToApply = dashDirection * dashForce + camOrientation.transform.up * dashUpwardForce;
+
+        playerBody.GetComponent<Rigidbody>().AddForce(forcesToApply, ForceMode.Impulse);
+
+        if (usingGravity)
+            playerBody.GetComponent<Rigidbody>().useGravity = false;
+
+        //Use this to delay script without coroutine
+        Invoke(nameof(ResetDash), attackCooldown);
+    }
+
+    private void ResetDash()
+    {
+        if(usingGravity)
+            playerBody.GetComponent<Rigidbody>().useGravity = true;
+    }
+
+    public Vector3 GetDirection(Transform forwardTransform)
+    {
+        //calculates and normalizes forward direction
+        Vector3 direction = new Vector3();
+        direction = forwardTransform.forward;
+
+        return direction.normalized;
+    }
+
+
+
+
+    #endregion
+
 
     void Update()
     {
@@ -47,6 +97,7 @@ public class KnifeAttack : MonoBehaviour
             //remove from knife, add to boxes
             cdTimer.AddTImeToTimer(rewardTime);
             Destroy(other.gameObject);
+            Dash();
         }
     }
 

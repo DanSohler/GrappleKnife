@@ -5555,6 +5555,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1237377485}
   m_CullTransparentMesh: 1
+--- !u!1 &1298301193 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5380446251545866590, guid: 87af45a95c691db4b8b37382873c9999, type: 3}
+  m_PrefabInstance: {fileID: 5380446251333031724}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1304260176
 GameObject:
   m_ObjectHideFlags: 0
@@ -6739,6 +6744,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1469879036}
   m_CullTransparentMesh: 1
+--- !u!1 &1512386362 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5380446250022615707, guid: 87af45a95c691db4b8b37382873c9999, type: 3}
+  m_PrefabInstance: {fileID: 5380446251333031724}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1519160342
 GameObject:
   m_ObjectHideFlags: 0
@@ -7879,11 +7889,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7427215524253623010, guid: fe951b32f7b92c644ac21bf796bd9024, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.249244
+      value: -1.41
       objectReference: {fileID: 0}
     - target: {fileID: 7427215524253623010, guid: fe951b32f7b92c644ac21bf796bd9024, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.7
+      value: 3.66
       objectReference: {fileID: 0}
     - target: {fileID: 7427215524253623010, guid: fe951b32f7b92c644ac21bf796bd9024, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8556,6 +8566,14 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5380446251181957064, guid: 87af45a95c691db4b8b37382873c9999, type: 3}
+      propertyPath: dashForce
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5380446251181957064, guid: 87af45a95c691db4b8b37382873c9999, type: 3}
+      propertyPath: playerBody
+      value: 
+      objectReference: {fileID: 1512386362}
+    - target: {fileID: 5380446251181957064, guid: 87af45a95c691db4b8b37382873c9999, type: 3}
       propertyPath: rewardTIme
       value: 5
       objectReference: {fileID: 0}
@@ -8568,6 +8586,10 @@ PrefabInstance:
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5380446251181957064, guid: 87af45a95c691db4b8b37382873c9999, type: 3}
+      propertyPath: usingGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5380446251181957064, guid: 87af45a95c691db4b8b37382873c9999, type: 3}
       propertyPath: animController
       value: 
       objectReference: {fileID: 912881362}
@@ -8576,8 +8598,16 @@ PrefabInstance:
       value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 5380446251181957064, guid: 87af45a95c691db4b8b37382873c9999, type: 3}
+      propertyPath: camOrientation
+      value: 
+      objectReference: {fileID: 1298301193}
+    - target: {fileID: 5380446251181957064, guid: 87af45a95c691db4b8b37382873c9999, type: 3}
       propertyPath: attackAnimSpeed
       value: 1.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 5380446251181957064, guid: 87af45a95c691db4b8b37382873c9999, type: 3}
+      propertyPath: dashUpwardForce
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5380446251181957065, guid: 87af45a95c691db4b8b37382873c9999, type: 3}
       propertyPath: m_Size.y
