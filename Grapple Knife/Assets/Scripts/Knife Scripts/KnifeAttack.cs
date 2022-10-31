@@ -4,18 +4,27 @@ using UnityEngine;
 
 public class KnifeAttack : MonoBehaviour
 {
-    public LayerMask killableLayer;
+    [SerializeField] LayerMask killableLayer;
     private bool cooldownDone = true;
-    public Material knifeIndicatorMat;
-    public Material knifeMat;
+    [SerializeField] Material knifeIndicatorMat;
+    [SerializeField] Material knifeMat;
+    [SerializeField] GameObject knifeMesh;
+    [SerializeField] Animator animController;
 
     [Header("Knife Vars")]
-    public float attackWindow;
-    public float attackCooldown;
-    public float bonusTime;
+
+    [SerializeField, Range(0.01f, 1f)] float attackWindow;
+    [SerializeField] float attackCooldown;
+    [SerializeField] float attackAnimSpeed;
+    [SerializeField] float rewardTime;
 
     public GameManager gm;
     [SerializeField] CountdownTimer cdTimer;
+    private void Start()
+    {
+
+        animController.SetFloat("speedMultiplier", attackAnimSpeed);
+    }
 
     void Update()
     {
@@ -36,7 +45,7 @@ public class KnifeAttack : MonoBehaviour
         {
             //  Debug.Log("Contacted Killable");
             //remove from knife, add to boxes
-            cdTimer.AddTImeToTimer(bonusTime);
+            cdTimer.AddTImeToTimer(rewardTime);
             Destroy(other.gameObject);
         }
     }
@@ -44,9 +53,10 @@ public class KnifeAttack : MonoBehaviour
     void StartAttack()
     {
         GetComponent<BoxCollider>().enabled = true;
-        GetComponent<MeshRenderer>().material = knifeIndicatorMat;
+        knifeMesh.GetComponent<MeshRenderer>().material = knifeIndicatorMat;
 
         // starts both timers
+        animController.SetTrigger("attackTrigger");
         StartCoroutine(AttackWindow());
     }
 
@@ -70,7 +80,8 @@ public class KnifeAttack : MonoBehaviour
     {
         yield return new WaitForSeconds(attackCooldown);
 
-        GetComponent<MeshRenderer>().material = knifeMat;
+        knifeMesh.GetComponent<MeshRenderer>().material = knifeMat;
+        animController.SetTrigger("attackTrigger");
         cooldownDone = true;
     }
 
