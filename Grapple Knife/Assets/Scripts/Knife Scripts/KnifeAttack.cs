@@ -9,15 +9,24 @@ public class KnifeAttack : MonoBehaviour
     public Material knifeIndicatorMat;
     public Material knifeMat;
 
-    public float knifeWindow;
-    public float knifeCooldown;
+    [Header("Knife Vars")]
+    public float attackWindow;
+    public float attackCooldown;
+    public float bonusTime;
+
+    public GameManager gm;
+    [SerializeField] CountdownTimer cdTimer;
 
     void Update()
     {
-        if ((Input.GetMouseButtonDown(0)) && cooldownDone == true)
+        if (gm.gameIsActive)
         {
-            StartAttack();
-            AttackRecovery();
+            if ((Input.GetMouseButtonDown(1)) && cooldownDone == true)
+            {
+                StartAttack();
+                AttackRecovery();
+            }
+
         }
     }
     // detects if a collission happens with a certain tag, then destroys the knife box collission collided with
@@ -26,6 +35,8 @@ public class KnifeAttack : MonoBehaviour
         if (other.tag == "Killable")
         {
             //  Debug.Log("Contacted Killable");
+            //remove from knife, add to boxes
+            cdTimer.AddTImeToTimer(bonusTime);
             Destroy(other.gameObject);
         }
     }
@@ -50,14 +61,14 @@ public class KnifeAttack : MonoBehaviour
     // Starts timer for how long the hurtbox is open for
     IEnumerator AttackWindow()
     {
-        yield return new WaitForSeconds(knifeWindow);
+        yield return new WaitForSeconds(attackWindow);
         GetComponent<BoxCollider>().enabled = false;
     }
 
     // Starts cooldown to prevent spamming of attacks
     IEnumerator AttackCooldown()
     {
-        yield return new WaitForSeconds(knifeCooldown);
+        yield return new WaitForSeconds(attackCooldown);
 
         GetComponent<MeshRenderer>().material = knifeMat;
         cooldownDone = true;

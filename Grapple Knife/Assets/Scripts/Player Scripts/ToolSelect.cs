@@ -9,8 +9,6 @@ public class ToolSelect : MonoBehaviour
     public GameObject knifeObj;
     public bool weaponType = false;
 
-    public float swapDelay;
-
     private void Awake()
     {
         grappleObj.SetActive(true);
@@ -46,7 +44,7 @@ public class ToolSelect : MonoBehaviour
     }
     public IEnumerator SwapGrappleCooldown()
     {
-        yield return new WaitForSeconds(swapDelay);
+        yield return new WaitForSeconds(1.5f);
         grappleScript.grappleCooldown = false;
     }
 }
