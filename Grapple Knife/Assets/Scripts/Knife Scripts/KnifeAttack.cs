@@ -9,6 +9,9 @@ public class KnifeAttack : MonoBehaviour
     public Material knifeIndicatorMat;
     public Material knifeMat;
 
+    public float knifeWindow;
+    public float knifeCooldown;
+
     void Update()
     {
         if ((Input.GetMouseButtonDown(0)) && cooldownDone == true)
@@ -47,14 +50,14 @@ public class KnifeAttack : MonoBehaviour
     // Starts timer for how long the hurtbox is open for
     IEnumerator AttackWindow()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(knifeWindow);
         GetComponent<BoxCollider>().enabled = false;
     }
 
     // Starts cooldown to prevent spamming of attacks
     IEnumerator AttackCooldown()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(knifeCooldown);
 
         GetComponent<MeshRenderer>().material = knifeMat;
         cooldownDone = true;

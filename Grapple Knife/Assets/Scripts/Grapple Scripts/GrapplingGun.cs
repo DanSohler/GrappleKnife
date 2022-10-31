@@ -16,6 +16,9 @@ public class GrapplingGun : MonoBehaviour
     public bool isGrappling = false;
     public bool grappleCooldown;
 
+    [Header("Grapple shot cooldown")]
+    public float grappleTimeDelay;
+
     void Awake()
     {
         debugAssist.SetActive(false);
@@ -121,7 +124,7 @@ public class GrapplingGun : MonoBehaviour
 
     public IEnumerator StartGrappleCooldown()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(grappleTimeDelay);
         grappleCooldown = false;
     }
 }
