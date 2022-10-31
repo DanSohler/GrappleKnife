@@ -35,47 +35,6 @@ public class KnifeAttack : MonoBehaviour
         animController.SetFloat("speedMultiplier", attackAnimSpeed);
     }
 
-    #region Dash
-
-    public void Dash()
-    {
-        Transform forwardT;
-        forwardT = camOrientation.transform;
-
-        Vector3 dashDirection = GetDirection(forwardT);
-
-        Vector3 forcesToApply = dashDirection * dashForce + camOrientation.transform.up * dashUpwardForce;
-
-        playerBody.GetComponent<Rigidbody>().AddForce(forcesToApply, ForceMode.Impulse);
-
-        if (usingGravity)
-            playerBody.GetComponent<Rigidbody>().useGravity = false;
-
-        //Use this to delay script without coroutine
-        Invoke(nameof(ResetDash), attackCooldown);
-    }
-
-    private void ResetDash()
-    {
-        if(usingGravity)
-            playerBody.GetComponent<Rigidbody>().useGravity = true;
-    }
-
-    public Vector3 GetDirection(Transform forwardTransform)
-    {
-        //calculates and normalizes forward direction
-        Vector3 direction = new Vector3();
-        direction = forwardTransform.forward;
-
-        return direction.normalized;
-    }
-
-
-
-
-    #endregion
-
-
     void Update()
     {
         if (gm.gameIsActive)
@@ -116,6 +75,46 @@ public class KnifeAttack : MonoBehaviour
         cooldownDone = false;
         StartCoroutine(AttackCooldown());
     }
+
+    #region Dash
+    public void Dash()
+    {
+        //sets and calculates forward with cam
+        Transform forwardT;
+        forwardT = camOrientation.transform;
+
+        Vector3 dashDirection = GetDirection(forwardT);
+
+        //Multiplies the beeg numberinos
+        Vector3 forcesToApply = dashDirection * dashForce + camOrientation.transform.up * dashUpwardForce;
+
+        //Kicks u in the ass forward
+        playerBody.GetComponent<Rigidbody>().AddForce(forcesToApply, ForceMode.Impulse);
+
+        //Just a bool for seeing if gravity is needed
+        if (usingGravity)
+            playerBody.GetComponent<Rigidbody>().useGravity = false;
+
+        //Use this to delay script without coroutine
+        Invoke(nameof(ResetDash), attackCooldown);
+    }
+
+    private void ResetDash()
+    {
+        //Currentyly only used if gravity is being used
+        if (usingGravity)
+            playerBody.GetComponent<Rigidbody>().useGravity = true;
+    }
+
+    public Vector3 GetDirection(Transform forwardTransform)
+    {
+        //calculates and normalizes forward direction
+        Vector3 direction = new Vector3();
+        direction = forwardTransform.forward;
+
+        return direction.normalized;
+    }
+    #endregion
 
     #region Enumerators
 
