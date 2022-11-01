@@ -4,18 +4,36 @@ using UnityEngine;
 
 public class KnifeAttack : MonoBehaviour
 {
-    public LayerMask killableLayer;
-    private bool cooldownDone = true;
-    public Material knifeIndicatorMat;
-    public Material knifeMat;
+    [SerializeField] LayerMask killableLayer;
+
+    [Header("Knife References")]
+
+    [SerializeField] Material knifeIndicatorMat;
+    [SerializeField] Material knifeMat;
+    [SerializeField] GameObject knifeMesh;
+    [SerializeField] Animator animController;
+    [SerializeField] GameObject playerBody;
+    [SerializeField] GameObject camOrientation;
 
     [Header("Knife Vars")]
-    public float attackWindow;
-    public float attackCooldown;
-    public float bonusTime;
+
+    [SerializeField, Range(0.01f, 1f)] float attackWindow;
+    [SerializeField] float attackCooldown;
+    [SerializeField] float attackAnimSpeed;
+    [SerializeField] float rewardTime;
+    private bool cooldownDone = true;
+
+    [Header("Knife Dash Vars")]
+    [SerializeField] float dashForce;
+    [SerializeField] float dashUpwardForce;
+    [SerializeField] bool usingGravity;
 
     public GameManager gm;
     [SerializeField] CountdownTimer cdTimer;
+    private void Start()
+    {
+        animController.SetFloat("speedMultiplier", attackAnimSpeed);
+    }
 
     void Update()
     {
@@ -36,17 +54,19 @@ public class KnifeAttack : MonoBehaviour
         {
             //  Debug.Log("Contacted Killable");
             //remove from knife, add to boxes
-            cdTimer.AddTImeToTimer(bonusTime);
+            cdTimer.AddTImeToTimer(rewardTime);
             Destroy(other.gameObject);
+            Dash();
         }
     }
 
     void StartAttack()
     {
         GetComponent<BoxCollider>().enabled = true;
-        GetComponent<MeshRenderer>().material = knifeIndicatorMat;
+        knifeMesh.GetComponent<MeshRenderer>().material = knifeIndicatorMat;
 
         // starts both timers
+        animController.SetTrigger("attackTrigger");
         StartCoroutine(AttackWindow());
     }
 
@@ -55,6 +75,46 @@ public class KnifeAttack : MonoBehaviour
         cooldownDone = false;
         StartCoroutine(AttackCooldown());
     }
+
+    #region Dash
+    public void Dash()
+    {
+        //sets and calculates forward with cam
+        Transform forwardT;
+        forwardT = camOrientation.transform;
+
+        Vector3 dashDirection = GetDirection(forwardT);
+
+        //Multiplies the beeg numberinos
+        Vector3 forcesToApply = dashDirection * dashForce + camOrientation.transform.up * dashUpwardForce;
+
+        //Kicks u in the ass forward
+        playerBody.GetComponent<Rigidbody>().AddForce(forcesToApply, ForceMode.Impulse);
+
+        //Just a bool for seeing if gravity is needed
+        if (usingGravity)
+            playerBody.GetComponent<Rigidbody>().useGravity = false;
+
+        //Use this to delay script without coroutine
+        Invoke(nameof(ResetDash), attackCooldown);
+    }
+
+    private void ResetDash()
+    {
+        //Currentyly only used if gravity is being used
+        if (usingGravity)
+            playerBody.GetComponent<Rigidbody>().useGravity = true;
+    }
+
+    public Vector3 GetDirection(Transform forwardTransform)
+    {
+        //calculates and normalizes forward direction
+        Vector3 direction = new Vector3();
+        direction = forwardTransform.forward;
+
+        return direction.normalized;
+    }
+    #endregion
 
     #region Enumerators
 
@@ -70,7 +130,8 @@ public class KnifeAttack : MonoBehaviour
     {
         yield return new WaitForSeconds(attackCooldown);
 
-        GetComponent<MeshRenderer>().material = knifeMat;
+        knifeMesh.GetComponent<MeshRenderer>().material = knifeMat;
+        animController.SetTrigger("attackTrigger");
         cooldownDone = true;
     }
 
