@@ -48,4 +48,15 @@ public class GameManager : MonoBehaviour
         Debug.Log("Quitting");
     }
 
+
+    #region Difficulty
+
+
+
+
+
+
+
+
+    #endregion
 }
