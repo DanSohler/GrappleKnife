@@ -209,7 +209,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5380446250022615707}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -592,7 +592,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5380446251025144487}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -721,9 +721,16 @@ MonoBehaviour:
   knifeIndicatorMat: {fileID: 2100000, guid: f5937509746373c4bbb7c8cf686b1024, type: 2}
   knifeMat: {fileID: 2100000, guid: de11e2f39706db34181064c3f0dabcc3, type: 2}
   knifeMesh: {fileID: 3110104293811878067}
+  animController: {fileID: 0}
+  playerBody: {fileID: 0}
+  camOrientation: {fileID: 0}
   attackWindow: 0
   attackCooldown: 0
-  rewardTIme: 0
+  attackAnimSpeed: 0
+  rewardTime: 0
+  dashForce: 0
+  dashUpwardForce: 0
+  usingGravity: 0
   gm: {fileID: 0}
   cdTimer: {fileID: 0}
 --- !u!65 &5380446251181957065
@@ -737,8 +744,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 10, y: 10, z: 5}
-  m_Center: {x: -4, y: -2, z: -1}
+  m_Size: {x: 10, y: 30, z: 5}
+  m_Center: {x: -4, y: -10, z: -1}
 --- !u!1 &5380446251237087875
 GameObject:
   m_ObjectHideFlags: 0

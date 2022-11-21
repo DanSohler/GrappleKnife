@@ -20,7 +20,6 @@ public class KnifeAttack : MonoBehaviour
     [SerializeField, Range(0.01f, 1f)] float attackWindow;
     [SerializeField] float attackCooldown;
     [SerializeField] float attackAnimSpeed;
-    [SerializeField] float rewardTime;
     private bool cooldownDone = true;
 
     [Header("Knife Dash Vars")]
@@ -54,7 +53,7 @@ public class KnifeAttack : MonoBehaviour
         {
             //  Debug.Log("Contacted Killable");
             //remove from knife, add to boxes
-            cdTimer.AddTImeToTimer(rewardTime);
+            other.GetComponent<BoxEffect>().BoxHit();
             Destroy(other.gameObject);
             Dash();
         }
