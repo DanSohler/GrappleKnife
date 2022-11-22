@@ -12,6 +12,7 @@ public class BoxEffect : MonoBehaviour
 
     [Header("vars")]
     [SerializeField] float boxTier;
+    [SerializeField] GameObject hitVFX;
 
     private void Awake()
     {
@@ -20,6 +21,11 @@ public class BoxEffect : MonoBehaviour
         sm = FindObjectOfType<ScoreManager>();
 
         //Add funt to make them grow from nothing to expected size, looks better than popping in
+    }
+
+    private void Update()
+    {
+        transform.Rotate(0.25f, 0.25f, 0.25f * Time.deltaTime);
     }
 
     public void BoxHit()
@@ -32,6 +38,11 @@ public class BoxEffect : MonoBehaviour
 
             //Gifts time to player, takes tier and multiplis it by 5, add funct to slowly degrade boxtier over time in another script
             countdownHandler.AddTImeToTimer(boxTier * 5);
+
+            //Spawns vfx
+
+            Instantiate(hitVFX,transform);
+
             //Sets up next box
             boxHandler.BoxKilled();
             //Add score to score tracker
@@ -40,6 +51,7 @@ public class BoxEffect : MonoBehaviour
         else if (sm.playerScore >= 1)
         {
             countdownHandler.AddTImeToTimer(boxTier * 5);
+            Instantiate(hitVFX,transform);
             boxHandler.BoxKilled();
             sm.playerScore++;
         }

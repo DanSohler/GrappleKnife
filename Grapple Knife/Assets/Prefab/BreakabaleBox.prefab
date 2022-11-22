@@ -158,4 +158,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxHandler: {fileID: 0}
   countdownHandler: {fileID: 0}
+  sm: {fileID: 0}
   boxTier: 1
+  hitVFX: {fileID: 7226583673155636401, guid: a2ab56839e1c9504ea9d141e95d0b16b, type: 3}
