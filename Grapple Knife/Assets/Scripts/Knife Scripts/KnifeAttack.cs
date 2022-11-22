@@ -15,6 +15,10 @@ public class KnifeAttack : MonoBehaviour
     [SerializeField] GameObject playerBody;
     [SerializeField] GameObject camOrientation;
 
+    [SerializeField] ObjectiveDisplay objText;
+    public GameManager gm;
+    [SerializeField] CountdownTimer cdTimer;
+
     [Header("Knife Vars")]
 
     [SerializeField, Range(0.01f, 1f)] float attackWindow;
@@ -26,9 +30,6 @@ public class KnifeAttack : MonoBehaviour
     [SerializeField] float dashForce;
     [SerializeField] float dashUpwardForce;
     [SerializeField] bool usingGravity;
-
-    public GameManager gm;
-    [SerializeField] CountdownTimer cdTimer;
     private void Start()
     {
         animController.SetFloat("speedMultiplier", attackAnimSpeed);
@@ -42,6 +43,13 @@ public class KnifeAttack : MonoBehaviour
             {
                 StartAttack();
                 AttackRecovery();
+
+                bool firstAttack = false;
+                if (!firstAttack)
+                {
+                    objText.DisableObjectiveObj(objText.targetObj);
+                    firstAttack = true;
+                }
             }
 
         }

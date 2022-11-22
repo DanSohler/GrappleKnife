@@ -14,6 +14,7 @@ public class CountdownTimer : MonoBehaviour
     [Header("Refs")]
     [SerializeField] TextMeshProUGUI timerText;
     [SerializeField] ScoreManager sm;
+    [SerializeField] TextMeshProUGUI[] textDisabledOnStart;
     [SerializeField] ObjectiveDisplay[] objImgs;
     public UnityEvent endTimerEvent;
 
@@ -22,10 +23,22 @@ public class CountdownTimer : MonoBehaviour
     private void Awake()
     {
         sm = FindObjectOfType<ScoreManager>();
+
+        foreach (TextMeshProUGUI obj in textDisabledOnStart)
+        {
+            obj.enabled = false;
+        }
+
+        timerText.enabled = false;
     }
 
     public void StartTimer()
     {
+        foreach (TextMeshProUGUI obj in textDisabledOnStart)
+        {
+            obj.enabled = true;
+        }
+
         timerText.enabled = true;
 
         //Sets timer text early to help emphasise total time

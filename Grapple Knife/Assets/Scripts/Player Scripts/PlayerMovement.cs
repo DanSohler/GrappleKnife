@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     public Transform playerCam;
     public Transform orientation;
 
+    [SerializeField] ObjectiveDisplay tutWalkTxt;
+
     //Other
     private Rigidbody rb;
 
@@ -56,6 +58,8 @@ public class PlayerMovement : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
+
+        tutWalkTxt.DisableObjectiveObj(tutWalkTxt.targetObj);
     }
 
     void Start()
@@ -176,7 +180,6 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxAeroSpeed);
         }
-
     }
 
     private void Jump()

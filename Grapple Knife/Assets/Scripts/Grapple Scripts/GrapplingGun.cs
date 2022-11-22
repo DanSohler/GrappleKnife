@@ -31,8 +31,9 @@ public class GrapplingGun : MonoBehaviour
     public bool grappleCooldown;
     //used for ui
 
-
+    [Header("Refs")]
     public GameManager gm;
+    [SerializeField] ObjectiveDisplay objText;
 
 
 
@@ -50,6 +51,13 @@ public class GrapplingGun : MonoBehaviour
                 StartGrapple();
                 grappleCooldown = true;
                 isGrappling = true;
+
+                bool firstGrapple = false;
+                if (!firstGrapple)
+                {
+                    objText.DisableObjectiveObj(objText.targetObj);
+                    firstGrapple = true;
+                }
             }
             else if (Input.GetMouseButtonUp(0))
             {
