@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -18,8 +19,9 @@ public class PlayerMovement : MonoBehaviour
 
     //Rotation and look
     private float xRotation;
-    private float sensitivity = 50f;
-    private float sensMultiplier = 1f;
+    [Header("Look Sensivity vars")]
+    [SerializeField] float sensitivity = 50f;
+    [SerializeField] float sensMultiplier = 1f;
 
     [Header("Movement Vars")]
     public float moveSpeed = 4500;
@@ -55,9 +57,14 @@ public class PlayerMovement : MonoBehaviour
     public float airMulV = 0.01f;
 
 
+    [SerializeField] UnityEvent EndTutText;
+
+
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
+
+
 
         tutWalkTxt.DisableObjectiveObj(tutWalkTxt.targetObj);
     }
@@ -179,6 +186,13 @@ public class PlayerMovement : MonoBehaviour
         if (rb.velocity.magnitude > maxAeroSpeed)
         {
             rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxAeroSpeed);
+        }
+
+        bool FirstStep = false;
+        if (!FirstStep)
+        {
+            EndTutText.Invoke();
+            FirstStep = true;
         }
     }
 

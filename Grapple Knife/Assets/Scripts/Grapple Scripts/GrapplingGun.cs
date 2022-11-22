@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using System.Collections;
 
 public class GrapplingGun : MonoBehaviour
@@ -33,9 +34,8 @@ public class GrapplingGun : MonoBehaviour
 
     [Header("Refs")]
     public GameManager gm;
-    [SerializeField] ObjectiveDisplay objText;
 
-
+    [SerializeField] UnityEvent EndTutText;
 
     void Awake()
     {
@@ -55,7 +55,7 @@ public class GrapplingGun : MonoBehaviour
                 bool firstGrapple = false;
                 if (!firstGrapple)
                 {
-                    objText.DisableObjectiveObj(objText.targetObj);
+                    EndTutText.Invoke();
                     firstGrapple = true;
                 }
             }

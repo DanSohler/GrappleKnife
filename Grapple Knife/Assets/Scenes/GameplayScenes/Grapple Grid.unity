@@ -6575,6 +6575,38 @@ PrefabInstance:
       propertyPath: maxAeroSpeed
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 5380446250022615701, guid: 87af45a95c691db4b8b37382873c9999, type: 3}
+      propertyPath: EndTutText.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5380446250022615701, guid: 87af45a95c691db4b8b37382873c9999, type: 3}
+      propertyPath: EndTutText.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5380446250022615701, guid: 87af45a95c691db4b8b37382873c9999, type: 3}
+      propertyPath: EndTutText.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1716675996}
+    - target: {fileID: 5380446250022615701, guid: 87af45a95c691db4b8b37382873c9999, type: 3}
+      propertyPath: EndTutText.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5380446250022615701, guid: 87af45a95c691db4b8b37382873c9999, type: 3}
+      propertyPath: EndTutText.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DisableObjectiveObj
+      objectReference: {fileID: 0}
+    - target: {fileID: 5380446250022615701, guid: 87af45a95c691db4b8b37382873c9999, type: 3}
+      propertyPath: EndTutText.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ObjectiveDisplay, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5380446250022615701, guid: 87af45a95c691db4b8b37382873c9999, type: 3}
+      propertyPath: EndTutText.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1122111244}
+    - target: {fileID: 5380446250022615701, guid: 87af45a95c691db4b8b37382873c9999, type: 3}
+      propertyPath: EndTutText.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5380446250022615703, guid: 87af45a95c691db4b8b37382873c9999, type: 3}
       propertyPath: m_Height
       value: 1.6743731
@@ -6754,6 +6786,38 @@ PrefabInstance:
     - target: {fileID: 5380446251474631869, guid: 87af45a95c691db4b8b37382873c9999, type: 3}
       propertyPath: grappleCooldownDelay
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5380446251474631869, guid: 87af45a95c691db4b8b37382873c9999, type: 3}
+      propertyPath: EndTutText.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5380446251474631869, guid: 87af45a95c691db4b8b37382873c9999, type: 3}
+      propertyPath: EndTutText.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5380446251474631869, guid: 87af45a95c691db4b8b37382873c9999, type: 3}
+      propertyPath: EndTutText.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 437886563}
+    - target: {fileID: 5380446251474631869, guid: 87af45a95c691db4b8b37382873c9999, type: 3}
+      propertyPath: EndTutText.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5380446251474631869, guid: 87af45a95c691db4b8b37382873c9999, type: 3}
+      propertyPath: EndTutText.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DisableObjectiveObj
+      objectReference: {fileID: 0}
+    - target: {fileID: 5380446251474631869, guid: 87af45a95c691db4b8b37382873c9999, type: 3}
+      propertyPath: EndTutText.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ObjectiveDisplay, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5380446251474631869, guid: 87af45a95c691db4b8b37382873c9999, type: 3}
+      propertyPath: EndTutText.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 649802594}
+    - target: {fileID: 5380446251474631869, guid: 87af45a95c691db4b8b37382873c9999, type: 3}
+      propertyPath: EndTutText.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5380446251545866585, guid: 87af45a95c691db4b8b37382873c9999, type: 3}
       propertyPath: m_Enabled
