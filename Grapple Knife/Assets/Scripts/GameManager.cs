@@ -19,6 +19,14 @@ public class GameManager : MonoBehaviour
         startUI.SetActive(true);
     }
 
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            print("Heyo");
+        }
+    }
+
     public void GamesStatus(bool activeStatus)
     {
         gameIsActive = activeStatus;

@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Grapple Grid.unity
+    path: Assets/Scenes/UiScenes/MenuScene.unity
+    guid: a634f5f44421b764d90e9f50804847ab
+  - enabled: 1
+    path: Assets/Scenes/GameplayScenes/Grapple Grid.unity
     guid: c9d5e591383d8b446817791450517a06
   m_configObjects: {}
