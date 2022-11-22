@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2642909979061569202}
   - component: {fileID: 2642909979061569205}
   - component: {fileID: 2642909979061569204}
+  - component: {fileID: 470752430943014778}
   m_Layer: 0
   m_Name: TransitionFade
   m_TagString: Untagged
@@ -95,3 +96,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!225 &470752430943014778
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2642909979061569206}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
