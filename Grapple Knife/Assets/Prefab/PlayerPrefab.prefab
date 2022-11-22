@@ -555,7 +555,6 @@ GameObject:
   - component: {fileID: 5380446251025144480}
   - component: {fileID: 5380446251025144483}
   - component: {fileID: 5380446251025144482}
-  - component: {fileID: 5380446251025144481}
   m_Layer: 8
   m_Name: Glasses
   m_TagString: Untagged
@@ -626,19 +625,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5380446251025144481
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5380446251025144487}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5380446251154475893
 GameObject:
   m_ObjectHideFlags: 0
@@ -727,7 +713,6 @@ MonoBehaviour:
   attackWindow: 0
   attackCooldown: 0
   attackAnimSpeed: 0
-  rewardTime: 0
   dashForce: 0
   dashUpwardForce: 0
   usingGravity: 0

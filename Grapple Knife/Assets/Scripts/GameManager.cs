@@ -7,23 +7,30 @@ using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
     public bool gameIsActive;
-    public GameObject startUI;
+    public GameObject PauseUi;
     public UnityEvent gameStart;
+
+    private bool pauseFlag;
+    public GameObject PauseText;
 
     //start with a input screen, once a player clicks a button, start the game
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = true;
-        GamesStatus(false);
-        startUI.SetActive(true);
+        Cursor.visible = false;
+        GamesStatus(true);
     }
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+
+        if (Input.GetKeyDown(KeyCode.Escape) && !pauseFlag)
         {
-            print("Heyo");
+            PauseGame();
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape) && pauseFlag)
+        {
+            ResumeGame();
         }
     }
 
@@ -34,27 +41,42 @@ public class GameManager : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
-            startUI.SetActive(false);
+            PauseUi.SetActive(false);
             gameStart.Invoke();
         }
         else
         {
             Cursor.lockState = CursorLockMode.Confined;
-            Cursor.visible = true;
-            startUI.SetActive(false);
+            Cursor.visible = false;
+            PauseUi.SetActive(false);
         }
     }
 
-    public void Endgame()
+    // pause Logic
+
+    public void PauseGame()
     {
-        SceneManager.LoadScene(0);
+        Time.timeScale = 0f;
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+
+        pauseFlag = true;
+        PauseUi.SetActive(true);
+        PauseText.SetActive(false);
     }
 
-    public void QuitGame()
+    public void ResumeGame()
     {
-        Application.Quit();
-        Debug.Log("Quitting");
+        Time.timeScale = 1f;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        pauseFlag = false;
+        PauseUi.SetActive(false);
+        PauseText.SetActive(true);
     }
+
+
 
 
     #region Difficulty

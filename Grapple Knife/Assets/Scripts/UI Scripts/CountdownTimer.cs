@@ -16,12 +16,17 @@ public class CountdownTimer : MonoBehaviour
 
     private void Start()
     {
-        timerText.enabled = false;
+        //timerText.enabled = false;
     }
 
     public void StartTimer()
     {
         timerText.enabled = true;
+        Debug.Log("Ayoo");
+
+        float minutes = Mathf.FloorToInt(timeRemaining / 60);
+        float seconds = Mathf.FloorToInt(timeRemaining % 60);
+        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
         StartCoroutine(startDelayTest());
     }
 
@@ -66,7 +71,9 @@ public class CountdownTimer : MonoBehaviour
 
     public IEnumerator startDelayTest()
     {
+        timerText.color = Color.grey;
         yield return new WaitForSeconds(startDelay);
+        timerText.color = Color.white;
         timerIsRunning = true;
     }
 }
