@@ -32,7 +32,7 @@ public class CountdownTimer : MonoBehaviour
         float seconds = Mathf.FloorToInt(timeRemaining % 60);
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
 
-        //Clears player survial time and points
+        //Clears player survial time and points, move to game manager
         sm.ResetScores();
         StartCoroutine(startDelayTest());
     }

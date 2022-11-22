@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameplayScenes/Grapple Grid.unity
     guid: c9d5e591383d8b446817791450517a06
+  - enabled: 1
+    path: Assets/Scenes/UiScenes/EndScene.unity
+    guid: f02350509bfe3c142b96e39d3f3baf63
   m_configObjects: {}
