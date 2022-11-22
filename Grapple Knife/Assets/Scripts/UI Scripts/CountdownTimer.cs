@@ -10,14 +10,10 @@ public class CountdownTimer : MonoBehaviour
     [SerializeField] float timeRemaining = 10;
     [SerializeField] bool timerIsRunning = false;
     [SerializeField] float startDelay;
+    [SerializeField] Color[] textColours;
     [Header("Refs")]
     [SerializeField] TextMeshProUGUI timerText;
     public UnityEvent endTimerEvent;
-
-    private void Start()
-    {
-        //timerText.enabled = false;
-    }
 
     public void StartTimer()
     {

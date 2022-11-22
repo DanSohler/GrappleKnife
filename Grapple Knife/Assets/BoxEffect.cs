@@ -8,6 +8,8 @@ public class BoxEffect : MonoBehaviour
     [SerializeField] BoxSpawner boxHandler;
     [SerializeField] CountdownTimer countdownHandler;
 
+    [SerializeField] ScoreManager sm;
+
     [Header("vars")]
     [SerializeField] float boxTier;
 
@@ -15,6 +17,7 @@ public class BoxEffect : MonoBehaviour
     {
         boxHandler = FindObjectOfType<BoxSpawner>();
         countdownHandler = FindObjectOfType<CountdownTimer>();
+        sm = FindObjectOfType<ScoreManager>();
 
         //Add funt to make them grow from nothing to expected size, looks better than popping in
     }
@@ -25,6 +28,7 @@ public class BoxEffect : MonoBehaviour
         countdownHandler.AddTImeToTimer(boxTier * 5);
         //Sets up next box
         boxHandler.BoxKilled();
+        sm.playerScore++;
     }
 
 }
