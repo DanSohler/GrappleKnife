@@ -11,13 +11,18 @@ public class ScoreManager : MonoBehaviour
 
     private void Awake()
     {
-
-        
         if (instance == null)
         {
             instance = this;
+            this.gameObject.transform.parent = null;
             DontDestroyOnLoad(this.gameObject);
         }
         
+    }
+
+    public void ResetScores()
+    {
+        playerScore = 0;
+        playerTime = 0;
     }
 }

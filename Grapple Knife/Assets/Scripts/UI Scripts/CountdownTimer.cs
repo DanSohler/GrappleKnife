@@ -10,19 +10,30 @@ public class CountdownTimer : MonoBehaviour
     [SerializeField] float timeRemaining = 10;
     [SerializeField] bool timerIsRunning = false;
     [SerializeField] float startDelay;
-    [SerializeField] Color[] textColours;
+    public float totalGameLength;
     [Header("Refs")]
     [SerializeField] TextMeshProUGUI timerText;
+    [SerializeField] ScoreManager sm;
     public UnityEvent endTimerEvent;
+
+    //Secret var used to track time in level
+
+    private void Awake()
+    {
+        sm = FindObjectOfType<ScoreManager>();
+    }
 
     public void StartTimer()
     {
         timerText.enabled = true;
-        Debug.Log("Ayoo");
 
+        //Sets timer text early to help emphasise total time
         float minutes = Mathf.FloorToInt(timeRemaining / 60);
         float seconds = Mathf.FloorToInt(timeRemaining % 60);
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+
+        //Clears player survial time and points
+        sm.ResetScores();
         StartCoroutine(startDelayTest());
     }
 
@@ -42,6 +53,7 @@ public class CountdownTimer : MonoBehaviour
     {
         if (timerIsRunning)
         {
+            totalGameLength += Time.deltaTime;
             if (timeRemaining > 0)
             {
                 timeRemaining -= Time.deltaTime;
@@ -51,6 +63,7 @@ public class CountdownTimer : MonoBehaviour
             {
                 timeRemaining = 0;
                 timerIsRunning = false;
+                sm.playerTime = totalGameLength;
                 endTimerEvent.Invoke();
             }
         }

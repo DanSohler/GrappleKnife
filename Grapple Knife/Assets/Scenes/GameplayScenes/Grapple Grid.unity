@@ -1287,7 +1287,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &606474899
 GameObject:
@@ -1366,12 +1366,9 @@ MonoBehaviour:
   timeRemaining: 2
   timerIsRunning: 0
   startDelay: 0
-  textColours:
-  - {r: 1, g: 0, b: 0, a: 0}
-  - {r: 1, g: 0.48557156, b: 0, a: 0}
-  - {r: 1, g: 0.9756098, b: 0, a: 0}
-  - {r: 1, g: 1, b: 1, a: 0}
+  totalGameLength: 0
   timerText: {fileID: 965983079}
+  sm: {fileID: 0}
   endTimerEvent:
     m_PersistentCalls:
       m_Calls:
@@ -2085,7 +2082,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7427215524253623010, guid: fe951b32f7b92c644ac21bf796bd9024, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7427215524253623010, guid: fe951b32f7b92c644ac21bf796bd9024, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3039,11 +3036,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1154825055}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.2652543, y: 1.335638, z: 21.423662}
+  m_LocalPosition: {x: -1.2652543, y: -28.664362, z: 21.423662}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_Father: {fileID: 1563897656}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1154825057
 MonoBehaviour:
@@ -4483,8 +4480,9 @@ Transform:
   - {fileID: 175255873}
   - {fileID: 799196767}
   - {fileID: 744706230}
+  - {fileID: 1154825056}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1709295290
 GameObject:
@@ -4773,7 +4771,7 @@ Transform:
   - {fileID: 753549469}
   - {fileID: 1404338992}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
 --- !u!1001 &1816954961
 PrefabInstance:
@@ -5167,7 +5165,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2100257825
 GameObject:
@@ -5267,7 +5265,7 @@ RectTransform:
   - {fileID: 1469879037}
   - {fileID: 766352620}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5287,7 +5285,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transitonAnim: {fileID: 766352621}
-  transitionTime: 1
+  transitionTime: 2
 --- !u!1001 &5380446251333031724
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5345,7 +5343,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5380446250795770817, guid: 87af45a95c691db4b8b37382873c9999, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5380446250795770817, guid: 87af45a95c691db4b8b37382873c9999, type: 3}
       propertyPath: m_LocalPosition.x
