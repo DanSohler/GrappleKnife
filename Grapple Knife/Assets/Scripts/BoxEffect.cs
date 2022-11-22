@@ -25,6 +25,10 @@ public class BoxEffect : MonoBehaviour
 
     private void Update()
     {
+        //transform.localScale = Vector3.Lerp(transform.localScale, transform.localScale * 10, 10f);
+
+
+
         transform.Rotate(0.25f, 0.25f, 0.25f * Time.deltaTime);
     }
 
