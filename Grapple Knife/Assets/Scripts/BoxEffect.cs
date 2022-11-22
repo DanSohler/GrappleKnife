@@ -24,11 +24,26 @@ public class BoxEffect : MonoBehaviour
 
     public void BoxHit()
     {
-        //Gifts time to player, takes tier and multiplis it by 5, add funct to slowly degrade boxtier over time in another script
-        countdownHandler.AddTImeToTimer(boxTier * 5);
-        //Sets up next box
-        boxHandler.BoxKilled();
-        sm.playerScore++;
+        //one time if, just activates the game
+        if (sm.playerScore == 0)
+        {
+            //Start game from here
+            countdownHandler.StartTimer();
+
+            //Gifts time to player, takes tier and multiplis it by 5, add funct to slowly degrade boxtier over time in another script
+            countdownHandler.AddTImeToTimer(boxTier * 5);
+            //Sets up next box
+            boxHandler.BoxKilled();
+            //Add score to score tracker
+            sm.playerScore++;
+        }
+        else if (sm.playerScore >= 1)
+        {
+            countdownHandler.AddTImeToTimer(boxTier * 5);
+            boxHandler.BoxKilled();
+            sm.playerScore++;
+        }
+        return;
     }
 
 }

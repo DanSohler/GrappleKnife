@@ -14,6 +14,7 @@ public class CountdownTimer : MonoBehaviour
     [Header("Refs")]
     [SerializeField] TextMeshProUGUI timerText;
     [SerializeField] ScoreManager sm;
+    [SerializeField] ObjectiveDisplay[] objImgs;
     public UnityEvent endTimerEvent;
 
     //Secret var used to track time in level
@@ -31,6 +32,12 @@ public class CountdownTimer : MonoBehaviour
         float minutes = Mathf.FloorToInt(timeRemaining / 60);
         float seconds = Mathf.FloorToInt(timeRemaining % 60);
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+
+        //Disable Obj Text
+        foreach (ObjectiveDisplay objs in objImgs)
+        {
+            objs.DisableObjectiveObj(objs.targetObj);
+        }
 
         //Clears player survial time and points, move to game manager
         sm.ResetScores();
