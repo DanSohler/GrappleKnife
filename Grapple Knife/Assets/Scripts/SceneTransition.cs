@@ -10,16 +10,19 @@ public class SceneTransition : MonoBehaviour
 
     public void LoadNextLevel()
     {
+        Time.timeScale = 1f;
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
     }
 
     public void LoadMenu()
     {
+        Time.timeScale = 1f;
         StartCoroutine(LoadMainMenu());
     }
 
     public void QuitGame()
     {
+        Time.timeScale = 1f;
         StartCoroutine(ExitGame());
     }
 

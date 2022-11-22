@@ -35,7 +35,8 @@ public class GrapplingGun : MonoBehaviour
     [Header("Refs")]
     public GameManager gm;
 
-    [SerializeField] UnityEvent EndTutText;
+    [SerializeField] UnityEvent EndGrappleTutText;
+    [SerializeField] UnityEvent EndReelTutText;
 
     void Awake()
     {
@@ -55,7 +56,7 @@ public class GrapplingGun : MonoBehaviour
                 bool firstGrapple = false;
                 if (!firstGrapple)
                 {
-                    EndTutText.Invoke();
+                    EndGrappleTutText.Invoke();
                     firstGrapple = true;
                 }
             }
@@ -87,6 +88,13 @@ public class GrapplingGun : MonoBehaviour
                 if (isGrappling)
                 {
                     joint.maxDistance = 0f;
+
+                    bool firstReel = false;
+                    if (!firstReel)
+                    {
+                        EndReelTutText.Invoke();
+                        firstReel = true;
+                    }
                 }
 
             }
