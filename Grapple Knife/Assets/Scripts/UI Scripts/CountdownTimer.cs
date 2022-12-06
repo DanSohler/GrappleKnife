@@ -30,6 +30,10 @@ public class CountdownTimer : MonoBehaviour
         }
 
         timerText.enabled = false;
+
+        Debug.Log("Timer Reset");
+        //Clears player survial time and points, move to game manager
+        sm.ResetScores();
     }
 
     public void StartTimer()
@@ -52,8 +56,7 @@ public class CountdownTimer : MonoBehaviour
             objs.DisableObjectiveObj(objs.targetObj);
         }
 
-        //Clears player survial time and points, move to game manager
-        sm.ResetScores();
+        
         StartCoroutine(startDelayTest());
     }
 

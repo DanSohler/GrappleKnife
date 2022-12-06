@@ -36,6 +36,11 @@ public class ScoreManager : MonoBehaviour
             if (playerScore >= 5)
             {
                 gameTier = tierRanks[2];
+
+                if (playerScore >= 12)
+                {
+                    gameTier = tierRanks[3];
+                }
             }
         }
     }
