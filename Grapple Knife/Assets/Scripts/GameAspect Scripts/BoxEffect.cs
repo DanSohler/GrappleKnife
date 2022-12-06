@@ -34,15 +34,15 @@ public class BoxEffect : MonoBehaviour
         //one time if, just activates the game
         if (sm.playerScore == 0)
         {
+            //Spawns vfx
+
+            Instantiate(hitVFX, transform);
+
             //Start game from here
             countdownHandler.StartTimer();
 
-            //Gifts time to player, takes tier and multiplis it by 5, add funct to slowly degrade boxtier over time in another script
+            //Gifts time to player, takes tier and multiplis it by 10, add funct to slowly degrade boxtier over time in another script
             countdownHandler.AddTImeToTimer(boxTier * 10);
-
-            //Spawns vfx
-
-            Instantiate(hitVFX,transform);
 
             //Sets up next box
             boxHandler.BoxKilled();

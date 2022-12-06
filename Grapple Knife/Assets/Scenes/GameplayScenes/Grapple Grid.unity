@@ -3109,6 +3109,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6956656380357029349, guid: fe951b32f7b92c644ac21bf796bd9024, type: 3}
+      propertyPath: hitVFX
+      value: 
+      objectReference: {fileID: 5024009746357069194, guid: ec3f674830402cc45bce805cf6493db7, type: 3}
+    - target: {fileID: 6956656380357029349, guid: fe951b32f7b92c644ac21bf796bd9024, type: 3}
       propertyPath: boxTier
       value: 1
       objectReference: {fileID: 0}
@@ -7244,6 +7248,10 @@ PrefabInstance:
       propertyPath: gm
       value: 
       objectReference: {fileID: 606474901}
+    - target: {fileID: 5380446251474631869, guid: 87af45a95c691db4b8b37382873c9999, type: 3}
+      propertyPath: vfxObj
+      value: 
+      objectReference: {fileID: 5330134760324173490, guid: d182b21b69f5f6f44b1750be0f543503, type: 3}
     - target: {fileID: 5380446251474631869, guid: 87af45a95c691db4b8b37382873c9999, type: 3}
       propertyPath: objText
       value: 

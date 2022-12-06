@@ -34,6 +34,7 @@ public class GrapplingGun : MonoBehaviour
 
     [Header("Refs")]
     public GameManager gm;
+    [SerializeField] GameObject vfxObj;
 
     [SerializeField] UnityEvent EndGrappleTutText;
     [SerializeField] UnityEvent EndReelTutText;
@@ -111,6 +112,12 @@ public class GrapplingGun : MonoBehaviour
         
     }
 
+    public void SpawnVFX(GameObject vfxObj, Vector3 vfxTransform)
+    {
+        Instantiate(vfxObj, vfxTransform, Quaternion.identity);
+    }
+
+
     //time top make a func that can set the max distance, usable for when doing a reel
     public void SetGrappleJointDistance(float jointDistance)
     {
@@ -138,6 +145,8 @@ public class GrapplingGun : MonoBehaviour
 
             //The distance grapple will try to keep from grapple point.
             SetGrappleJointDistance(distanceFromPoint * 0.8f); //Sets Max
+;
+            SpawnVFX(vfxObj, grapplePoint);
             joint.minDistance = 0f;
 
             joint.spring = jointSpring;
@@ -145,15 +154,6 @@ public class GrapplingGun : MonoBehaviour
             joint.massScale = jointMassScale;
         }
     }
-
-
-    /*  void DrawRope()
-      {
-          if (!joint) return;
-
-          lr.SetPosition(0, gunTip.position);
-          lr.SetPosition(1, grapplePoint);
-      } */
 
     public void StopGrapple()
     {
