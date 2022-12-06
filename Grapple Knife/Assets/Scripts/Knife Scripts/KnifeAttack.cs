@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Events;
 using UnityEngine;
 
 public class KnifeAttack : MonoBehaviour
@@ -18,7 +19,6 @@ public class KnifeAttack : MonoBehaviour
     [SerializeField] ObjectiveDisplay objText;
     public GameManager gm;
     [SerializeField] CountdownTimer cdTimer;
-    [SerializeField] GameObject hitVFX;
 
     [Header("Knife Vars")]
 
@@ -31,6 +31,12 @@ public class KnifeAttack : MonoBehaviour
     [SerializeField] float dashForce;
     [SerializeField] float dashUpwardForce;
     [SerializeField] bool usingGravity;
+
+
+    [Header("Feedback Vars")]
+    [SerializeField] GameObject hitVFX;
+    [SerializeField] UnityEvent hitEvent;
+
     private void Start()
     {
         animController.SetFloat("speedMultiplier", attackAnimSpeed);
@@ -60,6 +66,7 @@ public class KnifeAttack : MonoBehaviour
     {
         if (other.tag == "Killable")
         {
+            hitEvent.Invoke();
             //remove from knife, add to boxes
             other.GetComponent<BoxEffect>().BoxHit();
             Instantiate(hitVFX, other.transform.position, Quaternion.identity);
