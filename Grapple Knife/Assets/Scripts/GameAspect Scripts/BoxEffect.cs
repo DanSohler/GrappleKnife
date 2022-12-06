@@ -12,7 +12,6 @@ public class BoxEffect : MonoBehaviour
 
     [Header("vars")]
     [SerializeField] float boxTier;
-    [SerializeField] GameObject hitVFX;
 
     private void Awake()
     {
@@ -34,9 +33,6 @@ public class BoxEffect : MonoBehaviour
         //one time if, just activates the game
         if (sm.playerScore == 0)
         {
-            //Spawns vfx
-
-            Instantiate(hitVFX, transform);
 
             //Start game from here
             countdownHandler.StartTimer();
@@ -52,7 +48,6 @@ public class BoxEffect : MonoBehaviour
         else if (sm.playerScore >= 1)
         {
             countdownHandler.AddTImeToTimer(boxTier * 10);
-            Instantiate(hitVFX,transform);
             boxHandler.BoxKilled();
             sm.playerScore++;
         }

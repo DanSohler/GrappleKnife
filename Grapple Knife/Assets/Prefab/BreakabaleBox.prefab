@@ -4978,4 +4978,4 @@ MonoBehaviour:
   countdownHandler: {fileID: 0}
   sm: {fileID: 0}
   boxTier: 1
-  hitVFX: {fileID: 7226583673155636401, guid: a2ab56839e1c9504ea9d141e95d0b16b, type: 3}
+  hitVFX: {fileID: 5024009746357069194, guid: ec3f674830402cc45bce805cf6493db7, type: 3}

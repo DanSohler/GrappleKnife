@@ -638,7 +638,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh19108
+  m_Name: pb_Mesh77080
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1790,7 +1790,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Cut Crystals to stay in the game!
+  m_text: Hunt the Crystals!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3440,7 +3440,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Cut Crystals to stay in the game!
+  m_text: Hunt the Crystals!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5860,7 +5860,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1469879037
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7281,6 +7281,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 606474901}
     - target: {fileID: 5380446251181957064, guid: 87af45a95c691db4b8b37382873c9999, type: 3}
+      propertyPath: hitVFX
+      value: 
+      objectReference: {fileID: 5330134760324173490, guid: 3fa4e723ac2010244b77c446d4f93d66, type: 3}
+    - target: {fileID: 5380446251181957064, guid: 87af45a95c691db4b8b37382873c9999, type: 3}
       propertyPath: cdTimer
       value: 
       objectReference: {fileID: 606474902}
@@ -7387,7 +7391,7 @@ PrefabInstance:
     - target: {fileID: 5380446251474631869, guid: 87af45a95c691db4b8b37382873c9999, type: 3}
       propertyPath: vfxObj
       value: 
-      objectReference: {fileID: 5330134760324173490, guid: d182b21b69f5f6f44b1750be0f543503, type: 3}
+      objectReference: {fileID: 5330134760324173490, guid: 4c8a10328e4d8474eb7b28ff715974a4, type: 3}
     - target: {fileID: 5380446251474631869, guid: 87af45a95c691db4b8b37382873c9999, type: 3}
       propertyPath: objText
       value: 

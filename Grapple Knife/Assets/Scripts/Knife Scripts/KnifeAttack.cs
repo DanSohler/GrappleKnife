@@ -18,6 +18,7 @@ public class KnifeAttack : MonoBehaviour
     [SerializeField] ObjectiveDisplay objText;
     public GameManager gm;
     [SerializeField] CountdownTimer cdTimer;
+    [SerializeField] GameObject hitVFX;
 
     [Header("Knife Vars")]
 
@@ -59,9 +60,9 @@ public class KnifeAttack : MonoBehaviour
     {
         if (other.tag == "Killable")
         {
-            //  Debug.Log("Contacted Killable");
             //remove from knife, add to boxes
             other.GetComponent<BoxEffect>().BoxHit();
+            Instantiate(hitVFX, other.transform.position, Quaternion.identity);
             Destroy(other.gameObject);
             Dash();
         }
