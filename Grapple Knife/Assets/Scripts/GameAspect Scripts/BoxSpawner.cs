@@ -10,19 +10,41 @@ public class BoxSpawner : MonoBehaviour
     [Header("Obj Refs")]
     [SerializeField] GameObject[] spawnPoints;
     [SerializeField] GameObject[] boxObjs;
+    [SerializeField] ScoreManager sm;
+
+    [Header("Resetting values")]
+    int randomBox;
+    int randomSpawn;
+    int lastPnt;
+
+    //recurisve function to make sure spawn point is diff every time
+    int randomSpawnPoint()
+    {
+        int randPnt = Random.Range(0, spawnPoints.Length);
+        while (lastPnt == randPnt)
+        {
+            randPnt = Random.Range(0, spawnPoints.Length);
+        }
+        return randPnt;
+    }
 
     public void SetupBox()
-    {
-        //choose random spawn point
-        //check if spawn point was already used before
-        //spawn obj at new spawn point
-        //clear tracker of spawn points
-        int randomBox = Random.Range(0, boxObjs.Length);
-        int randomSpawn = Random.Range(0, spawnPoints.Length);
+    {  
+        if (sm.playerScore <= 0)
+        {
+            randomBox = Random.Range(0, boxObjs.Length);
+            randomSpawn = Random.Range(0, spawnPoints.Length);
 
-        Instantiate(boxObjs[randomBox], spawnPoints[randomSpawn].transform.position, Quaternion.identity);
+            Instantiate(boxObjs[randomBox], spawnPoints[randomSpawn].transform.position, Quaternion.identity);
+        }
+        else
+        {
+            randomBox = Random.Range(0, boxObjs.Length);
+            int spawnPnt = randomSpawnPoint();
 
-        Debug.Log("Spawned obj" + randomBox + "at spawnPoint no." + randomSpawn);
+            Instantiate(boxObjs[randomBox], spawnPoints[spawnPnt].transform.position, Quaternion.identity);
+            lastPnt = spawnPnt;
+        }
     }
 
     public IEnumerator SpawnBox(float delay)

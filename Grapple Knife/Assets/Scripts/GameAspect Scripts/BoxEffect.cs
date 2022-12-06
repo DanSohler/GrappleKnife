@@ -27,7 +27,6 @@ public class BoxEffect : MonoBehaviour
     {
         //Update box tier whenever game tier is updated
         boxTier = sm.gameTier;
-        transform.Rotate(0.25f, 0.25f, 0.25f * Time.deltaTime);
     }
 
     public void BoxHit()

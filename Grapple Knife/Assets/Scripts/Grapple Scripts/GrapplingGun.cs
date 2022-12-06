@@ -114,7 +114,14 @@ public class GrapplingGun : MonoBehaviour
     //time top make a func that can set the max distance, usable for when doing a reel
     public void SetGrappleJointDistance(float jointDistance)
     {
-        joint.maxDistance = jointDistance;
+        if (joint != null)
+        {
+            joint.maxDistance = jointDistance;
+        }
+        else
+        {
+            return;
+        }
     }
 
     void StartGrapple()

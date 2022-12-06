@@ -33,7 +33,7 @@ public class ScoreManager : MonoBehaviour
         {
             gameTier = tierRanks[1];
 
-            if (playerScore >= 8)
+            if (playerScore >= 5)
             {
                 gameTier = tierRanks[2];
             }
