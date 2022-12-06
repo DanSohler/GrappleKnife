@@ -25,10 +25,8 @@ public class BoxEffect : MonoBehaviour
 
     private void Update()
     {
-        //transform.localScale = Vector3.Lerp(transform.localScale, transform.localScale * 10, 10f);
-
-
-
+        //Update box tier whenever game tier is updated
+        boxTier = sm.gameTier;
         transform.Rotate(0.25f, 0.25f, 0.25f * Time.deltaTime);
     }
 
@@ -41,7 +39,7 @@ public class BoxEffect : MonoBehaviour
             countdownHandler.StartTimer();
 
             //Gifts time to player, takes tier and multiplis it by 5, add funct to slowly degrade boxtier over time in another script
-            countdownHandler.AddTImeToTimer(boxTier * 5);
+            countdownHandler.AddTImeToTimer(boxTier * 10);
 
             //Spawns vfx
 
@@ -54,7 +52,7 @@ public class BoxEffect : MonoBehaviour
         }
         else if (sm.playerScore >= 1)
         {
-            countdownHandler.AddTImeToTimer(boxTier * 5);
+            countdownHandler.AddTImeToTimer(boxTier * 10);
             Instantiate(hitVFX,transform);
             boxHandler.BoxKilled();
             sm.playerScore++;
