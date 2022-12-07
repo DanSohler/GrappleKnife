@@ -34,7 +34,7 @@ public class GrapplingGun : MonoBehaviour
 
     [Header("Refs")]
     public GameManager gm;
-    [SerializeField] GameObject vfxObj;
+    [SerializeField] GameObject grappleHitVFX;
 
     [SerializeField] UnityEvent EndGrappleTutText;
     [SerializeField] UnityEvent EndReelTutText;
@@ -146,7 +146,7 @@ public class GrapplingGun : MonoBehaviour
             //The distance grapple will try to keep from grapple point.
             SetGrappleJointDistance(distanceFromPoint * 0.8f); //Sets Max
 ;
-            SpawnVFX(vfxObj, grapplePoint);
+            SpawnVFX(grappleHitVFX, grapplePoint);
             joint.minDistance = 0f;
 
             joint.spring = jointSpring;

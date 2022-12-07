@@ -18,6 +18,10 @@ public class GrapplingRope : MonoBehaviour
     public float waveHeight;
     public AnimationCurve affectCurve;
 
+
+    [SerializeField] GameObject muzzleVFX;
+    [SerializeField] GameObject muzzlePoint;
+
     void Awake()
     {
         lr = GetComponent<LineRenderer>();
@@ -47,6 +51,7 @@ public class GrapplingRope : MonoBehaviour
         {
             spring.SetVelocity(velocity);
             lr.positionCount = quality + 1;
+            grapplingGun.SpawnVFX(muzzleVFX, muzzlePoint.transform.position);
         }
 
         spring.SetDamper(damper);
