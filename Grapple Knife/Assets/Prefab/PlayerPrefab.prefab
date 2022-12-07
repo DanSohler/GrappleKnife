@@ -1061,7 +1061,7 @@ MonoBehaviour:
   allowGrapple: 0
   grappleCooldown: 0
   gm: {fileID: 0}
-  grappleHitVFX: {fileID: 0}
+  grappleHitVFX: {fileID: 5330134760324173490, guid: 4c8a10328e4d8474eb7b28ff715974a4, type: 3}
   EndGrappleTutText:
     m_PersistentCalls:
       m_Calls: []

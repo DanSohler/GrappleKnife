@@ -112,6 +112,7 @@ public class GrapplingGun : MonoBehaviour
         
     }
 
+    //Add bool to make VFX follow where its spawned too
     public void SpawnVFX(GameObject vfxObj, Vector3 vfxTransform)
     {
         Instantiate(vfxObj, vfxTransform, Quaternion.identity);
